@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.block {
+  display: block;
+  width: 100%;
+  border: none;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.block:hover {
+  background-color: #ddd;
+  color: black;
+}
+</style>
+</head>
+<body>
+
+<h2><center>Add emission</center></h2>
+
+<p>1. Choose Type : 
+<select>
+  <option value="Type1">Type1</option>
+  <option value="Type2">Type2</option>
+  <option value="Type3">Type3</option>
+</select>
+
+
+    
+    <!-- <script>
+    /* When the user clicks on the button, 
+    toggle between hiding and showing the dropdown content */
+    function myFunction() {
+      document.getElementById("myDropdown").classList.toggle("show");
+    }
+    
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function(event) {
+      if (!event.target.matches('.dropbtn')) {
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+    }
+    </script> -->
+    
+<p></p>2.Specific Type:, 
+<select>
+    <option value="Type1">Type1</option>
+    <option value="Type2">Type2</option>
+    <option value="Type3">Type3</option>
+</select>
+
+<p></p>3. Quantity    <input type="number" name="quantity" value="Quantity"><br><br>
+
+<p></p>4. Calculated CO2): 
+
+
+<!-- <button class="block">Submit</button> -->
+<p></p><input type="submit" value="Submit">
+<input type="reset">
+
+</body>
+</html>

@@ -1,76 +1,213 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-.block {
-  display: block;
-  width: 100%;
-  border: none;
-  background-color: #4CAF50;
-  color: white;
-  padding: 14px 28px;
-  font-size: 16px;
-  cursor: pointer;
-  text-align: center;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
 
-.block:hover {
-  background-color: #ddd;
-  color: black;
-}
-</style>
-</head>
-<body>
+    <title>Add Emission</title>
 
-<h2><center>Add emission</center></h2>
-
-<p>1. Choose Type : 
-<select>
-  <option value="Type1">Type1</option>
-  <option value="Type2">Type2</option>
-  <option value="Type3">Type3</option>
-</select>
-
-
-    
-    <!-- <script>
-    /* When the user clicks on the button, 
-    toggle between hiding and showing the dropdown content */
-    function myFunction() {
-      document.getElementById("myDropdown").classList.toggle("show");
-    }
-    
-    // Close the dropdown if the user clicks outside of it
-    window.onclick = function(event) {
-      if (!event.target.matches('.dropbtn')) {
-        var dropdowns = document.getElementsByClassName("dropdown-content");
-        var i;
-        for (i = 0; i < dropdowns.length; i++) {
-          var openDropdown = dropdowns[i];
-          if (openDropdown.classList.contains('show')) {
-            openDropdown.classList.remove('show');
-          }
+    <style>
+        body {font-family: Arial, Helvetica, sans-serif;}
+        button {
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
         }
-      }
-    }
-    </script> -->
-    
-<p></p>2.Specific Type:, 
-<select>
-    <option value="Type1">Type1</option>
-    <option value="Type2">Type2</option>
-    <option value="Type3">Type3</option>
-</select>
+        /* set a hover effect for the button*/
 
-<p></p>3. Quantity    <input type="number" name="quantity" value="Quantity"><br><br>
+        button:hover {
+            opacity: 0.8;
+        }
 
-<p></p>4. Calculated CO2): 
+        .container-app-title{
+            margin:auto;
+            text-align: center;
+            padding: 35px;
+            height: 150px;
+            background-color:#4CAF50;
+        }
+
+        .container-main-text{
+            padding: 20px;
+            text-align: center;
+            height: 100px;
+        }
+
+        .container{
+            background-color: lightblue;
+            margin: auto;
+            width: 600px;
+            height: 600px;
+            padding: 40px;
+        }
+        .typeBtn{
+            width: max-content;
+            height: max-content;
+            background-color: white;
+            color: black;
+            border: 2px solid #f44336;
+        }
+        .typeBtn:hover {
+            background-color: #f44336;
+            color: white;
+        }
+        .specificTypeBtn {
+            width: max-content;
+            height: max-content;
+            background-color: white;
+            color: black;
+            border: 2px solid #f44336;
+        }
+        .specificTypeBtn:hover{
+            background-color: #f44336;
+            color: white;
+        }
 
 
-<!-- <button class="block">Submit</button> -->
-<p></p><input type="submit" value="Submit">
-<input type="reset">
+    </style>
+    </head>
+    <body>
+
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="main.html">Home</a></li>
+                    <li><a href="add_emission.html">New Emission</a></li>
+                    <li><a href="allEmissions.html">All Emissions</a></li>
+                    <li><a href="overview.html">Overview</a></li>
+                    <li><a href="settings.html">Settings</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="container-app-title">
+            <h1><strong>RubishGram</strong></h1>
+        </div>
+
+        <div class="container-main-text">
+            <h3>Fill the necessary fields to add an emission</h3>
+        </div>
+
+        <div class="container">
+
+            <h4>1. Choose Type</h4>
+            <button class="typeBtn" type="submit" id="transferBtn">
+                Transfer
+            </button>
+
+            <button class="typeBtn" type="submit" id="foodBtn">
+                Food
+            </button>
+            <!--
+            <select id="emissionType">
+                <option value="transfer">
+                    Transfer
+                </option>
+                <option value="food">
+                    Food
+                </option>
+            </select>
+
+            <div id="nothing" class="transferTypes" style="display:none"></div>
+            <div id="transfer" class="transferTypes" style="display:none">TRANSFER</div>
+            <div id="food" class="transferTypes" style="display:none">FOOD</div>
+
+            <script type="text/javascript">
+              $(function() {
+                $('#emissionType').change(function(){
+                  $('.transferTypes').hide();
+                  $('#' + $(this).val()).show();
+                });
+              });
+            </script> -->
+
+            <h4>2.Specific Type</h4>
+
+            <!-- TRANSFER TYPES -->
+            <button type="submit" class="specificTypeBtn" id="plane" value="plane" onclick="w3.hide('.specificTypeBtn')">
+                Plane
+            </button>
+            <button type="submit" class="specificTypeBtn" id="train" value="train" onclick="w3.hide('.specificTypeBtn')">
+                Train
+            </button>
+            <button type="submit" class="specificTypeBtn" id="boat" value="boat" onclick="w3.hide('.specificTypeBtn')">
+                Boat
+            </button>
+            <button type="submit" class="specificTypeBtn" id="car" value="car" onclick="w3.hide('.specificTypeBtn')">
+                Car
+            </button>
+            <!-- FOOD TYPES -->
+            <button type="submit" class="specificTypeBtn" id="whiteMeat" value="whiteMeat" onclick="w3.hide('.specificTypeBtn')">
+                White Meat
+            </button>
+            <button type="submit" class="specificTypeBtn" id="redMeat" value="redMeat" onclick="w3.hide('.specificTypeBtn')">
+                Red Meat
+            </button>
+            <button type="submit" class="specificTypeBtn" id="dairy" value="dairy" onclick="w3.hide('.specificTypeBtn')">
+                Dairy
+            </button>
+            <button type="submit" class="specificTypeBtn" id="bread" value="bread" onclick="w3.hide('.specificTypeBtn')">
+                Cereals, Breads
+            </button>
+
+
+            <script type="text/javascript">
+                document.getElementById("plane").style.display = "none";
+                document.getElementById("train").style.display = "none";
+                document.getElementById("boat").style.display = "none";
+                document.getElementById("car").style.display = "none";
+
+                document.getElementById("whiteMeat").style.display = "none";
+                document.getElementById("redMeat").style.display = "none";
+                document.getElementById("dairy").style.display = "none";
+                document.getElementById("bread").style.display = "none";
+
+                document.getElementById("transferBtn").onclick = function() {
+                    document.getElementById("plane").style.display = "block";
+                    document.getElementById("train").style.display = "block";
+                    document.getElementById("boat").style.display = "block";
+                    document.getElementById("car").style.display = "block";
+                  document.getElementById("whiteMeat").style.display = "none";
+                  document.getElementById("redMeat").style.display = "none";
+                  document.getElementById("dairy").style.display = "none";
+                  document.getElementById("bread").style.display = "none";
+
+                }
+
+                document.getElementById("foodBtn").onclick = function () {
+
+                  document.getElementById("whiteMeat").style.display = "block";
+                  document.getElementById("redMeat").style.display = "block";
+                  document.getElementById("dairy").style.display = "block";
+                  document.getElementById("bread").style.display = "block";
+
+                  document.getElementById("plane").style.display = "none";
+                  document.getElementById("train").style.display = "none";
+                  document.getElementById("boat").style.display = "none";
+                  document.getElementById("car").style.display = "none";
+                }
+
+            </script>
+
+
+
+            <h4>3. Quantity (in Kg)</h4>
+            <input type="number" name="quantity" value="Quantity"><br><br>
+
+            <form method="get" action="successfulEntry.html">
+                <button type="submit">
+                    Submit
+                </button>
+            </form>
+
+
+        </div>
 
 </body>
 </html>

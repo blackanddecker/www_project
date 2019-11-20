@@ -6,24 +6,10 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <title>Home</title>
+    <title>Successful Entry</title>
 
     <style>
         body {font-family: Arial, Helvetica, sans-serif;}
-        button {
-            background-color:#4CAF50;
-            color: white;
-            padding: 14px 20px;
-            margin: 8px 0;
-            border: none;
-            cursor: pointer;
-            width: 100%;
-        }
-        /* set a hover effect for the button*/
-
-        button:hover {
-            opacity: 0.8;
-        }
 
         .container-app-title{
             margin:auto;
@@ -46,7 +32,20 @@
             height: 600px;
             padding: 40px;
         }
-        </style>
+        .typeBtn{
+            width: max-content;
+            height: max-content;
+            background-color: white;
+            color: black;
+            border: 2px solid #f44336;
+        }
+        .typeBtn:hover {
+            background-color: #f44336;
+            color: white;
+        }
+
+
+    </style>
 </head>
 <body>
 
@@ -61,43 +60,15 @@
             </ul>
         </div>
     </nav>
+
     <div class="container-app-title">
-        <h1>
-            <strong>RubishGram</strong>
-        </h1>
+        <h1><strong>RubishGram</strong></h1>
     </div>
     <div class="container-main-text">
-        <h3>
-            Choose Activity
-        </h3>
+        <h3>Your carbon waste is:</h3>
+        <h2><strong>1500</strong> <b>kg CO2eq</b></h2>
     </div>
+</div>
 
-    <div class="container">
-        <form method="get" action="add_emission.html">
-            <button type="submit">
-                <h3>Add Emission</h3>
-            </button>
-        </form>
-        <form method="get" action="allEmissions.html">
-            <button type="submit">
-                <h3>Check Emissions</h3>
-            </button>
-        </form>
-        <form method="get" action="overview.html">
-            <button>
-                <h3>Check Current Budget</h3>
-            </button>
-        </form>
-        <form method="get" action="settings.html">
-            <button type="submit">
-                <h3>Settings</h3>
-            </button>
-        </form>
-        <form method="get" action="index.html">
-            <button type="submit">
-                <h3>Sign Out</h3>
-            </button>
-        </form>
-    </div>
 </body>
 </html>

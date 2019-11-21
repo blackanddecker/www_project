@@ -10,15 +10,25 @@
 
     <style>
         body {font-family: Arial, Helvetica, sans-serif;}
-        .button{
+        input[type=username],
+        input[type=password],
+        input[type=email]{
+            width: 100%;
+            padding: 15px;
+            margin: 5px 0 22px 0;
+            display: inline-block;
+            border: none;
+            background: #f1f1f1;
+        }
+        button{
             background-color: #4CAF50;
             color: white;
             padding: 14px 20px;
-            margin: 8px 0;
+            margin: auto;
             border: none;
             cursor: pointer;
-            height: 100px;
-            width: 100%;
+            height: max-content;
+            width: max-content;
         }
 
         /* set a hover effect for the button*/
@@ -42,11 +52,10 @@
         }
 
         .container{
-            background-color: lightblue;
             margin: auto;
-            padding: 80px;
+            background-color: lightblue;
+            padding: 16px;
             width: 600px;
-            height: 400px;
         }
         /*set styles for span and cancel button on small screens*/
 
@@ -78,11 +87,26 @@
 
     <div class="container-welcome">
         <h3>
-            Configure Options
+            Configure User Options
         </h3>
     </div>
-
     <!-- SETTINGS -->
+
+
+    <div class="container">
+        <label for="username"><b>Change Username</b></label>
+        <input type="username" placeholder="Enter New Username" name="uname" required>
+
+        <label for="password"><b>Change Password</b></label>
+        <input type="password" placeholder="Enter New Password" name="psw" required>
+
+        <label for="email"><b>Change email</b></label>
+        <input type="email" placeholder="Enter New email" name="email" required>
+
+        <button type="submit"><b>Save Changes</b></button>
+
+    </div>
+
 
 </body>
 </html>

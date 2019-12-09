@@ -82,8 +82,8 @@
             <nav class="navbar navbar-inverse">
                     <div class="container-fluid">
                         <ul class="nav navbar-nav">
-                            <li class="active"><a href="main.html">Home</a></li>
-                            <li><a href="add_emission.html">Add Emission</a></li>
+                            <li><a href="main.html">Home</a></li>
+                            <li class="active"><a href="add_emission.html">Add Emission</a></li>
                             <li><a href="allEmissions.html">Check Emissions</a></li>
                             <li><a href="overview.html">Check Current Budget</a></li>
                             <li><a href="settings.html">Settings</a></li>
@@ -156,9 +156,21 @@
             <button type="submit" class="specificTypeBtn" id="bread" value="bread" onclick="w3.hide('.specificTypeBtn')">
                 Cereals, Breads
             </button>
-
+            <label id="foodQuantityLabel" for="quantity"><h4>3. Quantity (in Kg)</h4></label>
+            <label id="transportQuantityLabel" for="quantity"><h4>3. Duration (in hours)</h4></label>
+            <input id="quantity" type="number" name="quantity" value="Quantity" required><br><br></input>
+            <form method="get" action="successfulEntry.html">
+                <button id="submitBtn" type="submit">
+                    Submit
+                </button>
+            </form>
 
             <script type="text/javascript">
+                document.getElementById("quantity").style.display ="none";
+                document.getElementById("foodQuantityLabel").style.display = "none";
+                document.getElementById("transportQuantityLabel").style.display = "none";
+                document.getElementById("submitBtn").style.display = "none";
+
                 document.getElementById("plane").style.display = "none";
                 document.getElementById("train").style.display = "none";
                 document.getElementById("boat").style.display = "none";
@@ -174,10 +186,14 @@
                     document.getElementById("train").style.display = "block";
                     document.getElementById("boat").style.display = "block";
                     document.getElementById("car").style.display = "block";
-                  document.getElementById("whiteMeat").style.display = "none";
-                  document.getElementById("redMeat").style.display = "none";
-                  document.getElementById("dairy").style.display = "none";
-                  document.getElementById("bread").style.display = "none";
+                    document.getElementById("whiteMeat").style.display = "none";
+                    document.getElementById("redMeat").style.display = "none";
+                    document.getElementById("dairy").style.display = "none";
+                    document.getElementById("bread").style.display = "none";
+                    document.getElementById("quantity").style.display ="block";
+                    document.getElementById("transportQuantityLabel").style.display = "block";
+                    document.getElementById("submitBtn").style.display = "block";
+                    document.getElementById("foodQuantityLabel").style.display = "none";
 
                 }
 
@@ -192,20 +208,20 @@
                   document.getElementById("train").style.display = "none";
                   document.getElementById("boat").style.display = "none";
                   document.getElementById("car").style.display = "none";
+
+                  document.getElementById("quantity").style.display ="block";
+                  document.getElementById("foodQuantityLabel").style.display = "block";
+                  document.getElementById("submitBtn").style.display = "block";
+                  document.getElementById("transportQuantityLabel").style.display = "none";
                 }
 
             </script>
 
 
 
-            <h4>3. Quantity (in Kg)</h4>
-            <input type="number" name="quantity" value="Quantity"><br><br>
 
-            <form method="get" action="successfulEntry.html">
-                <button type="submit">
-                    Submit
-                </button>
-            </form>
+
+
 
 
         </div>

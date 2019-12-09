@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <title>Overview</title>
 
@@ -59,6 +61,38 @@
 
 
     </style>
+
+    <script>
+    window.onload = function () {
+        
+    var chart = new CanvasJS.Chart("chartContainer", {
+        animationEnabled: true,
+        
+        title:{
+            text:""
+        },
+        axisX:{
+            interval: 1
+        },
+        axisY2:{
+            interlacedColor: "rgba(1,77,101,.2)",
+            gridColor: "rgba(1,77,101,.1)",
+        },
+        data: [{
+            type: "bar",
+            name: "companies",
+            axisYType: "secondary",
+            color: "#006400",
+            dataPoints: [
+                { y: 420, label: "Average User" },
+                { y: 463, label: "You" }
+            ]
+        }]
+    });
+    chart.render();
+    
+    }
+    </script>
 </head>
 <body>
     <div class="container-app-title">
@@ -86,6 +120,11 @@
     </div>
     <!-- SHOW CURRENT BUDGET & TOTAL AMOUNT OF EMISSIONS -->
     <div class="container">
+
+
+
+        <div id="chartContainer" style="height: 300px; width: 400;"></div>
+
         <h3><b>October</b></h3>
         <h4>Total Budget: 500Kg</h4>
 

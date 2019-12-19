@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -96,8 +98,7 @@
         </div>
 
         <div class="container">
-
-            <h4>1. Choose Type</h4>
+            <h4>Choose Emission Type</h4>
             <button class="typeBtn" type="submit" id="transferBtn">
                 Transfer
             </button>
@@ -105,72 +106,40 @@
             <button class="typeBtn" type="submit" id="foodBtn">
                 Food
             </button>
-            <!--
-            <select id="emissionType">
-                <option value="transfer">
-                    Transfer
-                </option>
-                <option value="food">
-                    Food
-                </option>
-            </select>
 
-            <div id="nothing" class="transferTypes" style="display:none"></div>
-            <div id="transfer" class="transferTypes" style="display:none">TRANSFER</div>
-            <div id="food" class="transferTypes" style="display:none">FOOD</div>
-
-            <script type="text/javascript">
-              $(function() {
-                $('#emissionType').change(function(){
-                  $('.transferTypes').hide();
-                  $('#' + $(this).val()).show();
-                });
-              });
-            </script> -->
-
-            <h4>2.Specific Type</h4>
-
-            <!-- TRANSFER TYPES -->
-            <button type="submit" class="specificTypeBtn" id="plane" value="plane" onclick="w3.hide('.specificTypeBtn')">
-                Plane
-            </button>
-            <button type="submit" class="specificTypeBtn" id="train" value="train" onclick="w3.hide('.specificTypeBtn')">
-                Train
-            </button>
-            <button type="submit" class="specificTypeBtn" id="boat" value="boat" onclick="w3.hide('.specificTypeBtn')">
-                Boat
-            </button>
-            <button type="submit" class="specificTypeBtn" id="car" value="car" onclick="w3.hide('.specificTypeBtn')">
-                Car
-            </button>
-            <!-- FOOD TYPES -->
-            <button type="submit" class="specificTypeBtn" id="whiteMeat" value="whiteMeat" onclick="w3.hide('.specificTypeBtn')">
-                White Meat
-            </button>
-            <button type="submit" class="specificTypeBtn" id="redMeat" value="redMeat" onclick="w3.hide('.specificTypeBtn')">
-                Red Meat
-            </button>
-            <button type="submit" class="specificTypeBtn" id="dairy" value="dairy" onclick="w3.hide('.specificTypeBtn')">
-                Dairy
-            </button>
-            <button type="submit" class="specificTypeBtn" id="bread" value="bread" onclick="w3.hide('.specificTypeBtn')">
-                Cereals, Breads
-            </button>
-            <label id="foodQuantityLabel" for="quantity"><h4>3. Quantity (in Kg)</h4></label>
-            <label id="transportQuantityLabel" for="quantity"><h4>3. Duration (in hours)</h4></label>
-            <input id="quantity" type="number" name="quantity" value="Quantity" required><br><br></input>
-            <form method="get" action="successfulEntry.html">
-                <button id="submitBtn" type="submit">
-                    Submit
-                </button>
+            <h4>Choose Specific Type</h4>
+            <form method="post" action="CreateEmissionServlet">
+				<input type="hidden" name="username" value="<%=request.getParameter("username")%>">
+	            <!-- TRANSFER TYPES -->
+	            <button type="submit" class="specificTypeBtn" name="transferType" id="plane" value="plane" onclick="w3.hide('.specificTypeBtn')">
+	                Plane
+	            </button>
+	            <button type="submit" class="specificTypeBtn" name="transferType" id="train" value="train" onclick="w3.hide('.specificTypeBtn')">
+	                Train
+	            </button>
+	            <button type="submit" class="specificTypeBtn" name="transferType" id="boat" value="boat" onclick="w3.hide('.specificTypeBtn')">
+	                Boat
+	            </button>
+	            <button type="submit" class="specificTypeBtn" name="transferType" id="car" value="car" onclick="w3.hide('.specificTypeBtn')">
+	                Car
+	            </button>
+	            
+	            <!-- FOOD TYPES -->
+	            <button type="submit" class="specificTypeBtn" name="foodType" id="whiteMeat" value="whiteMeat" onclick="w3.hide('.specificTypeBtn')">
+	                White Meat
+	            </button>
+	            <button type="submit" class="specificTypeBtn" name="foodType" id="redMeat" value="redMeat" onclick="w3.hide('.specificTypeBtn')">
+	                Red Meat
+	            </button>
+	            <button type="submit" class="specificTypeBtn" name="foodType" id="dairy" value="dairy" onclick="w3.hide('.specificTypeBtn')">
+	                Dairy
+	            </button>
+	            <button type="submit" class="specificTypeBtn" name="foodType" id="bread" value="bread" onclick="w3.hide('.specificTypeBtn')">
+	                Cereals, Breads
+	            </button>
             </form>
 
             <script type="text/javascript">
-                document.getElementById("quantity").style.display ="none";
-                document.getElementById("foodQuantityLabel").style.display = "none";
-                document.getElementById("transportQuantityLabel").style.display = "none";
-                document.getElementById("submitBtn").style.display = "none";
-
                 document.getElementById("plane").style.display = "none";
                 document.getElementById("train").style.display = "none";
                 document.getElementById("boat").style.display = "none";
@@ -190,10 +159,6 @@
                     document.getElementById("redMeat").style.display = "none";
                     document.getElementById("dairy").style.display = "none";
                     document.getElementById("bread").style.display = "none";
-                    document.getElementById("quantity").style.display ="block";
-                    document.getElementById("transportQuantityLabel").style.display = "block";
-                    document.getElementById("submitBtn").style.display = "block";
-                    document.getElementById("foodQuantityLabel").style.display = "none";
 
                 }
 
@@ -209,10 +174,6 @@
                   document.getElementById("boat").style.display = "none";
                   document.getElementById("car").style.display = "none";
 
-                  document.getElementById("quantity").style.display ="block";
-                  document.getElementById("foodQuantityLabel").style.display = "block";
-                  document.getElementById("submitBtn").style.display = "block";
-                  document.getElementById("transportQuantityLabel").style.display = "none";
                 }
 
             </script>

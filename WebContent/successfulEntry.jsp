@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -58,17 +60,17 @@
         <nav class="navbar navbar-inverse">
                 <div class="container-fluid">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="main.html">Home</a></li>
-                        <li><a href="add_emission.html">Add Emission</a></li>
-                        <li><a href="allEmissions.html">Check Emissions</a></li>
-                        <li><a href="overview.html">Check Current Budget</a></li>
-                        <li><a href="settings.html">Settings</a></li>
+                        <li class="active"><a href="main.jsp">Home</a></li>
+                        <li><a href="add_emission.jsp">Add Emission</a></li>
+                        <li><a href="allEmissions.jsp">Check Emissions</a></li>
+                        <li><a href="overview.jsp">Check Current Budget</a></li>
+                        <li><a href="settings.jsp">Settings</a></li>
                     </ul>
                 </div>
             </nav>
     <div class="container-main-text">
         <h3>Your carbon waste is:</h3>
-        <h2><strong>1500</strong> <b>kg CO2eq</b></h2>
+        <h2><strong><%= request.getParameter("carbonQuantity") %></strong> <b>kg CO2eq</b></h2>
     </div>
 </div>
 

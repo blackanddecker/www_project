@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -76,7 +78,8 @@
     </div>
 
     <div class="container">
-        <form method="get" action="add_emission.html">
+        <form method="post" action="add_emission.jsp">
+        	<input type="hidden" name="username" value="<%=request.getParameter("username")%>">
             <button type="submit">
                 <h3>Add Emission</h3>
             </button>
@@ -96,7 +99,7 @@
                 <h3>Settings</h3>
             </button>
         </form>
-        <form method="get" action="index.html">
+        <form method="get" action="index.jsp">
             <button type="submit">
                 <h3>Sign Out</h3>
             </button>
@@ -104,3 +107,4 @@
     </div>
 </body>
 </html>
+    

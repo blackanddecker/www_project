@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -83,7 +85,7 @@ button:hover {
   <h3>Create new account</h3>
 </div>
 
-<form method="get" action="registerInfo.html">
+<form action="RegisterServlet" method="post" >
   <div class="container">
     
     <label for="username"><b>Username</b></label>

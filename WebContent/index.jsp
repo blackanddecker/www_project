@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -72,12 +74,12 @@
     </div>
 
     <div class="container">
-        <form method="get" action="login.html">
+        <form method="get" action="login.jsp">
             <button type="submit" class="button" type="submit">
                 <h3><b>Sign In</b></h3>
             </button>
         </form>
-        <form method="get" action="register.html">
+        <form method="get" action="register.jsp">
             <button type="submit" class="button" type="submit">
                 <h3><b>Sign Up</b></h3>
             </button>

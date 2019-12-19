@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <html>
 
 <head>
@@ -77,7 +79,6 @@ span.psw {
 
 </head>
 <body>
-
     <div class="container-app-title">
         <h1>
             <strong>RubishGram</strong>
@@ -88,10 +89,10 @@ span.psw {
         <h3>Log In To Your Account</h3>
     </div>
 
-    <form method="get" action="main.html">
+    <form action="LoginServlet" method="post">
         <div class="container-login">
           <label for="username"><b>Username</b></label>
-          <input type="username" placeholder="Enter Username" name="uname" required>
+          <input type="username" placeholder="Enter Username" name="username" required>
 
           <label for="password"><b>Password</b></label>
           <input type="password" placeholder="Enter Password" name="psw" required>

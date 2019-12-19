@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,19 +8,29 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <title>All Emissions</title>
+    <title>Settings</title>
 
     <style>
         body {font-family: Arial, Helvetica, sans-serif;}
+        input[type=username],
+        input[type=password],
+        input[type=email]{
+            width: 100%;
+            padding: 15px;
+            margin: 5px 0 22px 0;
+            display: inline-block;
+            border: none;
+            background: #f1f1f1;
+        }
         button{
             background-color: #4CAF50;
             color: white;
             padding: 14px 20px;
-            margin: 8px 0;
+            margin: auto;
             border: none;
             cursor: pointer;
-            height: 100px;
-            width: 100%;
+            height: max-content;
+            width: max-content;
         }
 
         /* set a hover effect for the button*/
@@ -42,11 +54,10 @@
         }
 
         .container{
-            background-color: lightblue;
             margin: auto;
-            padding: 80px;
-            width: max-content;
-            height: max-content;
+            background-color: lightblue;
+            padding: 16px;
+            width: 600px;
         }
         /*set styles for span and cancel button on small screens*/
 
@@ -55,16 +66,6 @@
                 display: block;
                 float: none;
             }
-        }
-        table, th, td {
-            border: 1px solid black;
-            border-collapse: collapse;
-        }
-        th, td {
-            padding: 5px;
-        }
-        th {
-            text-align: left;
         }
     </style>
 </head>
@@ -80,71 +81,34 @@
                     <ul class="nav navbar-nav">
                         <li><a href="main.html">Home</a></li>
                         <li><a href="add_emission.html">Add Emission</a></li>
-                        <li class="active"><a href="allEmissions.html">Check Emissions</a></li>
+                        <li><a href="allEmissions.html">Check Emissions</a></li>
                         <li><a href="overview.html">Check Current Budget</a></li>
-                        <li><a href="settings.html">Settings</a></li>
+                        <li class="active"><a href="settings.html">Settings</a></li>
                     </ul>
                 </div>
             </nav>
-
     <div class="container-welcome">
         <h3>
-            See all of your emissions
+            Configure User Options
         </h3>
     </div>
+    <!-- SETTINGS -->
 
-    <!-- PRINT EMISSIONS IN LIST -->
+
     <div class="container">
-        <h4><b>Transport Table</b></h4>
+        <label for="username"><b>Change Username</b></label>
+        <input type="username" placeholder="Enter New Username" name="uname" required>
 
-        <table style="width:max-content">
-            <tr>
-                <th>Transport Type</th>
-                <th>Duration (Hours)</th>
-                <th>Quantity of CO2(Kgs) Spent</th>
-            </tr>
-            <tr>
-                <td>Flight</td>
-                <td>2</td>
-                <td>230</td>
-            </tr>
-            <tr>
-                <td>Train</td>
-                <td>4</td>
-                <td>18</td>
-            </tr>
-            <tr>
-                <td>Car</td>
-                <td>18</td>
-                <td>80</td>
-            </tr>
-        </table>
+        <label for="password"><b>Change Password</b></label>
+        <input type="password" placeholder="Enter New Password" name="psw" required>
 
-        <h4><b>Food Table</b></h4>
+        <label for="email"><b>Change email</b></label>
+        <input type="email" placeholder="Enter New email" name="email" required>
 
-        <table style="width:max-content">
-            <tr>
-                <th>Food Type</th>
-                <th>Quantity of food (Kgs) Spent</th>
-                <th>Quantity of CO2(Kgs) Spent</th>
-            </tr>
-            <tr>
-                <td>White meat</td>
-                <td>0.2</td>
-                <td>2.1</td>
-            </tr>
-            <tr>
-                <td>Red Meat</td>
-                <td>0.3</td>
-                <td>7.5</td>
-            </tr>
-            <tr>
-                <td>Bread</td>
-                <td>1.3</td>
-                <td>0.9</td>
-            </tr>
-        </table>
+        <button type="submit"><b>Save Changes</b></button>
+
     </div>
+
 
 </body>
 </html>

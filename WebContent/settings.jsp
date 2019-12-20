@@ -79,11 +79,11 @@
         <nav class="navbar navbar-inverse">
                 <div class="container-fluid">
                     <ul class="nav navbar-nav">
-                        <li><a href="main.html">Home</a></li>
-                        <li><a href="add_emission.html">Add Emission</a></li>
-                        <li><a href="allEmissions.html">Check Emissions</a></li>
-                        <li><a href="overview.html">Check Current Budget</a></li>
-                        <li class="active"><a href="settings.html">Settings</a></li>
+                        <li><a href="main.jsp">Home</a></li>
+                        <li><a href="add_emission.jsp">Add Emission</a></li>
+                        <li><a href="allEmissions.jsp">Check Emissions</a></li>
+                        <li><a href="overview.jsp">Check Current Budget</a></li>
+                        <li class="active"><a href="settings.jsp">Settings</a></li>
                     </ul>
                 </div>
             </nav>

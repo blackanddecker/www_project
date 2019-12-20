@@ -27,18 +27,22 @@ public class AddFoodEmissionServlet extends HttpServlet {
 		String username = request.getParameter("username");
 		String foodType = request.getParameter("foodType");
 		float foodQuantity = Float.valueOf(request.getParameter("quantity"));
-		float carbonQuantity;
-		carbonQuantity = calculateCarbonInFood(foodType, foodQuantity);
-		boolean insertStatus = insertFoodEmission(username, foodType, foodQuantity, carbonQuantity);
-		if(insertStatus) {
-			request.setAttribute("carbonQuantity", carbonQuantity);
-			RequestDispatcher rd = request.getRequestDispatcher("successfulEntry.jsp");
-			rd.forward(request, response);
-		} else {
-			out.print("Oops.. Something went wrong!");
-			RequestDispatcher rd = request.getRequestDispatcher("main.jsp");
-			rd.include(request, response);
+		
+		if(username != null && foodType != null && foodQuantity != 0) {
+			float carbonQuantity;
+			carbonQuantity = calculateCarbonInFood(foodType, foodQuantity);
+			boolean insertStatus = insertFoodEmission(username, foodType, foodQuantity, carbonQuantity);
+			if(insertStatus) {
+				request.setAttribute("carbon", carbonQuantity);
+				RequestDispatcher rd = request.getRequestDispatcher("successfulEntry.jsp");
+				rd.forward(request, response);
+			} else {
+				out.print("Oops.. Something went wrong!");
+				RequestDispatcher rd = request.getRequestDispatcher("main.jsp");
+				rd.include(request, response);
+			}
 		}
+		
 	}
 	
 	public float calculateCarbonInFood(String foodType, float quantity) {

@@ -72,7 +72,6 @@
             Welcome to RubishGram
         </h3>
     </div>
-
     <div class="container">
         <form method="get" action="login.jsp">
             <button type="submit" class="button" type="submit">

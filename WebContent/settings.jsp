@@ -98,18 +98,18 @@
 
         <div class="container">
             <label for="username"><b>Change Username</b></label>
-            <input type="username" placeholder="Enter New Username" name="username" required>
+            <input type="username" placeholder="Enter New Username" name="username">
 
             <label for="password"><b>Change Password</b></label>
-            <input type="password" placeholder="Enter New Password" name="psw" required>
+            <input type="password" placeholder="Enter New Password" name="psw">
 
             <label for="email"><b>Change email</b></label>
-            <input type="email" placeholder="Enter New email" name="email" required>
+            <input type="email" placeholder="Enter New email" name="email">
 
             <button type="submit"><b>Save Changes</b></button>
 
         </div>
-
+	</form>
 
 </body>
 </html>

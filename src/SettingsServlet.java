@@ -25,27 +25,47 @@ public class SettingsServlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 				boolean settingsStatus;
 				response.setContentType("text/html");
-				PrintWriter out = response.getWriter();
+				PrintWriter out = response.getWriter();				
+				String username = request.getParameter("username");		
+				String email = request.getParameter("email");
+				String password = request.getParameter("psw");
+				String type;
 				
 				ConnectionDetails connDetails = new ConnectionDetails();
 				Connection conn = connDetails.getConnection();
 				
-				String username = request.getParameter("username");		
-				String email = request.getParameter("email");
-				String password = request.getParameter("psw");
-				out.print("USERNAME: " + username);
-				
                 if(usernameExists(username)){
 					out.print("Username already exists. Please choose a different one!");
 				} else {
-					settingsStatus = changeSettings(username, password, email);
-					if(settingsStatus) {
-						out.print("Settings Updated");
-						RequestDispatcher rd = request.getRequestDispatcher("settings.jsp");
-						rd.include(request, response);
-					} else {
-						out.print("Something went wrong.. Try again!");
+					if(username != null) {
+						type = "username";
+						settingsStatus = changeSettings(type, username);
+						if(settingsStatus) {
+							out.print("Username Updated" + "<br>");
+						} else {
+							out.print("Something went wrong.. Try again!"+ "<br>");
+						}
 					}
+					if(password != null) {
+						type = "password";
+						settingsStatus = changeSettings(type, password);
+						if(settingsStatus) {
+							out.print("Password Updated" + "<br>");
+						} else {
+							out.print("Something went wrong.. Try again!" + "<br>");
+						}
+					}
+					if(email != null) {
+						type = "email";
+						settingsStatus = changeSettings(type, email);
+						if(settingsStatus) {
+							out.print("Email Updated" + "<br>");
+						} else {
+							out.print("Something went wrong.. Try again!" + "<br>");
+						}
+					}
+					RequestDispatcher rd = request.getRequestDispatcher("settings.jsp");
+					rd.include(request, response);
 				}
 	}
 	/**
@@ -75,30 +95,24 @@ public class SettingsServlet extends HttpServlet {
 		return exists;
 	}
 	
-	private boolean changeSettings(
-			String username, 
-			String password, 
-			String email)  {
-				ConnectionDetails connDetails = new ConnectionDetails();
-				Connection conn = connDetails.getConnection();
-				try {
-					String sql = "UPDATE Users SET username = ?, password = ?, email = ?)";
-					PreparedStatement preparedStatement = conn.prepareStatement(sql);
-					
-					preparedStatement.setString(1, username);
-					preparedStatement.setString(2, password);
-					preparedStatement.setString(3, email);
-					
-					int success = preparedStatement.executeUpdate();
-					if (success > 0) {
-						return true;
-					} 
-				} catch (SQLException ex) {
-					ex.printStackTrace();
-				} catch (Exception ex) {
-					ex.printStackTrace();
-				}
-				return false;
+	private boolean changeSettings(String type, String field)  {
+		ConnectionDetails connDetails = new ConnectionDetails();
+		Connection conn = connDetails.getConnection();
+		try {
+			String sql = "UPDATE Users SET " + type + " = ?";
+			PreparedStatement preparedStatement = conn.prepareStatement(sql);
+			preparedStatement.setString(1, field);			
+			int success = preparedStatement.executeUpdate();
+			if (success > 0) {
+				return true;
+			} 
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return false;
 	}
+	
 
 }

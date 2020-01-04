@@ -143,9 +143,9 @@
           function drawChart() {
             var data = google.visualization.arrayToDataTable([
               ['Emission Type', 'CO2(Kgs)'],
-              ['Transport', 328],
-              ['Food', 10.1],
-              ['Remaining', 161.9]
+              ['Transport', <%=request.getParameter("TransportEmissions")%>],
+              ['Food', <%=request.getParameter("FoodEmissions")%>],
+              ['Remaining', <%=request.getParameter("RemainingBugdet")%>]
             ]);
 
             // Optional; add a title and set the width and height of the chart
@@ -156,7 +156,7 @@
             chart.draw(data, options);
           }
         </script>
-        <h4>Remaining Budget: 161.9Kg</h4>
+        <h4>Remaining Budget: <%=request.getParameter("RemainingBugdet")%></h4>
 
     </div>
 

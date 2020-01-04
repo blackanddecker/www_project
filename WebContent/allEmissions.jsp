@@ -112,7 +112,7 @@
                 <thead>
                     <tr>
                         <th>Transport Type</th>
-                        <th>Distance (Km)</th>
+                        <th>Distance (Km )</th>
                         <th>Quantity of CO2(Kgs) Spent</th>
                     </tr>
                 </thead>

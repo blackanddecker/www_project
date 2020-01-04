@@ -84,22 +84,26 @@
                 <h3>Add Emission</h3>
             </button>
         </form>
-        <form method="get" action="allEmissions.html">
+        <form method="post" action="AllEmissionsServlet">
+         	<input type="hidden" name="username" value="<%=request.getParameter("username")%>">       
             <button type="submit">
                 <h3>Check Emissions</h3>
             </button>
         </form>
-        <form method="get" action="overview.html">
+        <form method="get" action="OverviewServlet">
+        	<input type="hidden" name="username" value="<%=request.getParameter("username")%>">       
             <button>
                 <h3>Check Current Budget</h3>
             </button>
         </form>
-        <form method="get" action="settings.html">
+        <form method="get" action="settings.jsp"> 
+        	<input type="hidden" name="username" value="<%=request.getParameter("username")%>">        
             <button type="submit">
                 <h3>Settings</h3>
             </button>
         </form>
         <form method="get" action="index.jsp">
+         	<input type="hidden" name="username" value="<%=request.getParameter("username")%>">
             <button type="submit">
                 <h3>Sign Out</h3>
             </button>

@@ -97,9 +97,6 @@
     <form action="SettingsServlet" method="post">
 
         <div class="container">
-            <label for="username"><b>Change Username</b></label>
-            <input type="username" placeholder="Enter New Username" name="username">
-
             <label for="password"><b>Change Password</b></label>
             <input type="password" placeholder="Enter New Password" name="psw">
 

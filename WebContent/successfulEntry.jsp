@@ -70,7 +70,8 @@
             </nav>
     <div class="container-main-text">
         <h3>Your carbon waste is:</h3>
-        <h2><strong><%=request.getParameter("carbon")%></strong> <b>kg CO2eq</b></h2>
+        <h2><strong><%=request.getAttribute("carbon")%></strong> <b>kg CO2eq</b></h2>
+        <input type="hidden" name="username" value="<%=request.getParameter("username")%>">
     </div>
 </div>
 

@@ -97,6 +97,10 @@
 
     <!-- PRINT EMISSIONS IN LIST -->
     <div class="container">
+        <form method="post" action="AllEmissionsServlet">
+        <input type="hidden" name="username" value="<%=request.getParameter("username")%>">
+
+
         <h4><b>Transport Table</b></h4>
 
         <table style="width:max-content">

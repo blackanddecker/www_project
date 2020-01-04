@@ -27,12 +27,14 @@ public class AllEmissionsServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();		
 		String username = request.getParameter("username");
 		if(username != null) {
-			boolean selectFoodEmissionsStatus = selectFoodEmissions(username);
-            boolean selectTransportEmissionsStatus = selectTransportEmissions(username);
+			ArrayList<FoodEmissions> FoodEmissions = selectFoodEmissions(username);
+            ArrayList<TransportEmissions> TransportEmissions = selectTransportEmissions(username);
 
-			if(selectFoodEmissionsStatus && selectTransportEmissionsStatus) {
+			if(FoodEmissions  != null && TransportEmissions  != null ) {
 				RequestDispatcher rd = request.getRequestDispatcher("allEmissions.jsp");
-				rd.forward(request, response);
+                request.setAttribute("FoodEmissions", FoodEmissions);
+                request.setAttribute("TransportEmissions", TransportEmissions);
+                rd.forward(request, response);
 			} else {
 				out.print("Oops.. Something went wrong!");
 				RequestDispatcher rd = request.getRequestDispatcher("main.jsp");
@@ -52,13 +54,19 @@ public class AllEmissionsServlet extends HttpServlet {
 			PreparedStatement preparedStatement = conn.prepareStatement(sql);
 			preparedStatement.setString(1, username);
 			ResultSet rs = preparedStatement.executeQuery();
+
+            ArrayList<FoodEmission> list = new ArrayList<FoodEmission>();
             while (rs.next())
                 {
-                    status = true;
-
                     String foodType = rs.getString("foodType");
                     float foodQuantity = rs.getFloat("foodQuantity");
                     float carbonQuantity = rs.getFloat("carbonQuantity");
+
+                    FoodEmission foodEmission = new FoodEmission();
+                    foodEmission.setfoodType(foodType);
+                    foodEmission.setfoodQuantity(foodQuantity);
+                    foodEmission.setcarbonQuantity(carbonQuantity);
+                    list.add(foodEmission);
                     // print the results
                     System.out.format("%s, %s, %s\n", foodType, foodQuantity, carbonQuantity);
                 }
@@ -67,7 +75,7 @@ public class AllEmissionsServlet extends HttpServlet {
 		} catch(Exception ex) {
 			ex.printStackTrace();
 		}
-		return status;
+		return list;
 	}
 
     public boolean selectTransportEmissions(String username) {
@@ -80,13 +88,21 @@ public class AllEmissionsServlet extends HttpServlet {
 			PreparedStatement preparedStatement = conn.prepareStatement(sql);
 			preparedStatement.setString(1, username);
 			ResultSet rs = preparedStatement.executeQuery();
+
+            ArrayList<TransportEmission> list = new ArrayList<TransportEmission>();
+
             while (rs.next())
                 {
-                    status = true;
 
                     String transportType = rs.getString("transportType");
                     float distance = rs.getFloat("distance");
                     float carbonQuantity = rs.getFloat("carbonQuantity");
+
+                    TransportEmission transportEmission = new TransportEmission();
+                    transportEmission.settransportType(transportType);
+                    transportEmission.setdistance(distance);
+                    transportEmission.setcarbonQuantity(carbonQuantity);
+                    list.add(transportEmission);
                     // print the results
                     System.out.format("%s, %s, %s\n", transportType, distance, carbonQuantity);
                 }
@@ -96,6 +112,6 @@ public class AllEmissionsServlet extends HttpServlet {
 		} catch(Exception ex) {
 			ex.printStackTrace();
 		}
-		return status;
+		return list;
 	}
 }

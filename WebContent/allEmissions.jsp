@@ -2,6 +2,12 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
+    <%
+        ArrayList<FoodEmissions> list = new ArrayList<FoodEmissions>();
+        ArrayList<TransportEmissions> list = new ArrayList<TransportEmissions>();
+        transportEmissionslist = (ArrayList<TransportEmissions>) request.getAttribute("TransportEmissions");
+        foodEmissionslist = (ArrayList<FoodEmissions>) request.getAttribute("FoodEmissions");
+    %>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -99,7 +105,37 @@
     <div class="container">
         <form method="post" action="AllEmissionsServlet">
         <input type="hidden" name="username" value="<%=request.getParameter("username")%>">
+        
+        <h4><b>Transport Table</b></h4>
 
+        <table>
+                <thead>
+                    <tr>
+                        <th>Transport Type</th>
+                        <th>Distance (Km)</th>
+                        <th>Quantity of CO2(Kgs) Spent</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(int i = 0; i < transportEmissionslist.size(); i++) {
+                        TransportEmissions temissions = new TransportEmissions();
+                        temissions = transportEmissionslist.get(i);
+                        //out.println(temissions.getId());
+                        //out.println(temissions.getFirstname());
+                        //out.println(temissions.getLastname());
+                    %>
+        
+        
+                    <tr>
+                        <td><%=temissions.gettransportType()%></td>
+                        <td><%=temissions.getdistance()%></td>
+                        <td><%=temissions.getcarbonQuantity()%></td>
+                        </tr>
+                    <%
+                    };
+                    %>
+                </tbody>
+            </table>
 
         <h4><b>Transport Table</b></h4>
 

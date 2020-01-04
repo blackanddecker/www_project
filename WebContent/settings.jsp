@@ -94,20 +94,21 @@
     </div>
     <!-- SETTINGS -->
 
+    <form action="SettingsServlet" method="post">
 
-    <div class="container">
-        <label for="username"><b>Change Username</b></label>
-        <input type="username" placeholder="Enter New Username" name="uname" required>
+        <div class="container">
+            <label for="username"><b>Change Username</b></label>
+            <input type="username" placeholder="Enter New Username" name="username" required>
 
-        <label for="password"><b>Change Password</b></label>
-        <input type="password" placeholder="Enter New Password" name="psw" required>
+            <label for="password"><b>Change Password</b></label>
+            <input type="password" placeholder="Enter New Password" name="psw" required>
 
-        <label for="email"><b>Change email</b></label>
-        <input type="email" placeholder="Enter New email" name="email" required>
+            <label for="email"><b>Change email</b></label>
+            <input type="email" placeholder="Enter New email" name="email" required>
 
-        <button type="submit"><b>Save Changes</b></button>
+            <button type="submit"><b>Save Changes</b></button>
 
-    </div>
+        </div>
 
 
 </body>

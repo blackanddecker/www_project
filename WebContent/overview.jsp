@@ -64,9 +64,34 @@
 
     </style>
 
-    <script>
+    
+</head>
+<body>
+    <div class="container-app-title">
+        <h1>
+            <strong>RubishGram</strong>
+        </h1>
+    </div>
+
+    <nav class="navbar navbar-inverse">
+	    <div class="container-fluid">
+	        <ul class="nav navbar-nav">
+	            <li><a href="main.jsp">Home</a></li>
+	            <li><a href="add_emission.jsp">Add Emission</a></li>
+	            <li><a href="allEmissions.jsp">Check Emissions</a></li>
+	            <li class="active"><a href="overview.jsp">Check Current Budget</a></li>
+	            <li><a href="settings.jsp">Settings</a></li>
+	        </ul>
+	    </div>
+    </nav>
+    
+    
+	<script>
     window.onload = function () {
-        
+
+   	var avg = ${AvgEmissions};
+   	var total = ${TotalUserEmmissions};
+   	
     var chart = new CanvasJS.Chart("chartContainer", {
         animationEnabled: true,
         
@@ -86,8 +111,8 @@
             axisYType: "secondary",
             color: "#006400",
             dataPoints: [
-                { y: 420, label: "Average User" },
-                { y: 463, label: "You" }
+                { y: avg, label: "Average User"}, 
+                { y: total, label: "You"}
             ]
         }]
     });
@@ -95,31 +120,13 @@
     
     }
     </script>
-</head>
-<body>
-    <div class="container-app-title">
-        <h1>
-            <strong>RubishGram</strong>
-        </h1>
-    </div>
-
-    <nav class="navbar navbar-inverse">
-            <div class="container-fluid">
-                <ul class="nav navbar-nav">
-                    <li><a href="main.jsp">Home</a></li>
-                    <li><a href="add_emission.jsp">Add Emission</a></li>
-                    <li><a href="allEmissions.jsp">Check Emissions</a></li>
-                    <li class="active"><a href="overview.jsp">Check Current Budget</a></li>
-                    <li><a href="settings.jsp">Settings</a></li>
-                </ul>
-            </div>
-        </nav>
-
     <div class="container-welcome">
         <h3>
             Carbon Budget
         </h3>
     </div>
+    
+    
     <!-- SHOW CURRENT BUDGET & TOTAL AMOUNT OF EMISSIONS -->
     <div class="container">
 
@@ -141,11 +148,15 @@
 
           // Draw the chart and set the chart values
           function drawChart() {
+        	  var transportEmissions = ${TransportEmissions};
+        	  var foodEmissions = ${FoodEmissions};
+        	  var remaining = ${RemainingBudget};
+        	  
             var data = google.visualization.arrayToDataTable([
               ['Emission Type', 'CO2(Kgs)'],
-              ['Transport', <%=request.getParameter("TransportEmissions")%>],
-              ['Food', <%=request.getParameter("FoodEmissions")%>],
-              ['Remaining', <%=request.getParameter("RemainingBugdet")%>]
+              ['Transport', transportEmissions],
+              ['Food', foodEmissions],
+              ['Remaining', remaining]
             ]);
 
             // Optional; add a title and set the width and height of the chart
@@ -156,7 +167,7 @@
             chart.draw(data, options);
           }
         </script>
-        <h4>Remaining Budget: <%=request.getParameter("RemainingBugdet")%></h4>
+        <h4>Remaining Budget: <%=request.getAttribute("RemainingBudget")%> Kgs</h4>
 
     </div>
 

@@ -96,6 +96,11 @@
 	            		<input type="hidden" name="username" value="<%=request.getParameter("username")%>">
 	            		<input type="submit" Value="Settings">
 	            	</form>
+	            </li>	
+				<li>
+		            <form method="post" action="index.jsp">
+	            		<input type="submit" value="Log out">
+	        		</form>
 	            </li>
 	        </ul>
 	    </div>

@@ -121,6 +121,11 @@
                     		<input type="submit" Value="Settings">
                     	</form>
                     </li>
+                    <li>
+			            <form method="post" action="index.jsp">
+		            		<input type="submit" value="Log out">
+		        		</form>
+		            </li>
                 </ul>
             </div>
         </nav>

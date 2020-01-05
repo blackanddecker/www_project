@@ -40,12 +40,17 @@ public class OverviewServlet extends HttpServlet {
                 float remainingBudget = totalUserBudget - totalUserEmissions;
                 float avgEmissions = avgTransportEmissions + avgFoodEmissions;
                 float offset = 0;
+                float meanRemainingBudget = totalUserBudget / 2;
                 String warning = "false";
                 
                 if(remainingBudget < 0) {
-                	warning = "true";
+                	warning = "overLimit";
                 	offset = - remainingBudget;
                 	remainingBudget = 0;
+                } else if(totalUserEmissions >= meanRemainingBudget) {
+                	warning = "aboveMean";
+                } else {
+                	warning = "belowMean";
                 }
 				RequestDispatcher rd = request.getRequestDispatcher("overview.jsp");
                 request.setAttribute("FoodEmissions", foodEmissions);

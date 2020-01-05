@@ -66,6 +66,14 @@
             height: 150px;
             color:red;
         }
+        .ok-text{
+        	margin:auto;
+        	text-align: center;
+            padding: 35px;
+            height: 150px;
+            color:blue;
+        	
+        }
         /*set styles for span and cancel button on small screens*/
 
         @media screen and (max-width: 300px) {
@@ -81,16 +89,26 @@
     
 </head>
 <body>
-    <% 	if("true".equals(request.getAttribute("warning"))) { 		
+    <% 	if("overLimit".equals(request.getAttribute("warning"))) { 		
 	    %>
 		    <div class="danger-text">
-		    	<b>WARNING</b><br>
-		    	Your emissions have overcome the available budget for this month! <br>
-		    	The difference is: <%=request.getAttribute("offset") %> Kg
+		    	<h2><b>FAIL</b><br></h2>
+		    	<h4>Your emissions have overcome the available budget for this month! <br>
+		    	The difference is: <%=request.getAttribute("offset") %> Kg</h4>
 		    </div>
 	    <%
-    	}
-    %>
+    	} else if("aboveMean".equals(request.getAttribute("warning"))) {
+    	%>
+    		<div class="danger-text">
+		    	<h2><b>WARNING</b><br></h2>
+		    	<h4>Be careful, your carbon usage is high this month!</h4>
+		    </div>
+	    <% } else if("belowMean".equals(request.getAttribute("warning"))) {
+	    %>
+	    	<div class="ok-text">
+	    	<h2><b>Congratulations!</b><br></h2>
+	    	<h4>Keep going like that. You are helping save the environment.<br></h4></div>
+	    <%} %>
     <div class="container-app-title">
         <h1>
             <strong>RubishGram</strong>
@@ -129,6 +147,11 @@
 	            		<input type="hidden" name="username" value="<%=request.getParameter("username")%>">
 	            		<input type="submit" Value="Settings">
 	            	</form>
+	            </li>
+	            <li>
+		            <form method="post" action="index.jsp">
+	            		<input type="submit" value="Log out">
+	        		</form>
 	            </li>
 	        </ul>
 	    </div>

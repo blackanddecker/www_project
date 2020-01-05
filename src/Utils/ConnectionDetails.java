@@ -4,9 +4,9 @@ import java.sql.DriverManager;
 
 public class ConnectionDetails {
 	String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-	String URL = "jdbc:mysql://localhost:3306/RubishGram?useSSL=false";
-	String USER = "root";
-	String PASS = "1e2d3c4b5a";
+	String URL = "jdbc:mysql://localhost/RubishGram?useSSL=false";
+	String USER = "pmauser";
+	String PASS = "password_here";
 	
 	public Connection getConnection() {
 		try {

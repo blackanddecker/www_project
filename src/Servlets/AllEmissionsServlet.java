@@ -51,7 +51,7 @@ public class AllEmissionsServlet extends HttpServlet {
 		ArrayList<FoodEmission> list = null;
 		ConnectionDetails connDetails = new ConnectionDetails();
 		Connection conn = connDetails.getConnection();
-		String sql = "SELECT * FROM FoodEmissions WHERE username=?";
+		String sql = "SELECT * FROM FoodEmissions WHERE username=? AND MONTH(date) = MONTH(CURRENT_DATE()) AND YEAR(date) = YEAR(CURRENT_DATE())";
 		try {
 			PreparedStatement preparedStatement = conn.prepareStatement(sql);
 			preparedStatement.setString(1, username);
@@ -86,7 +86,7 @@ public class AllEmissionsServlet extends HttpServlet {
 		ArrayList<TransportEmission> list = null;
 		ConnectionDetails connDetails = new ConnectionDetails();
 		Connection conn = connDetails.getConnection();
-		String sql = "SELECT * FROM TransportEmissions WHERE username=?";
+		String sql = "SELECT * FROM TransportEmissions WHERE username=? AND MONTH(date) = MONTH(CURRENT_DATE()) AND YEAR(date) = YEAR(CURRENT_DATE())";
 		try {
 			PreparedStatement preparedStatement = conn.prepareStatement(sql);
 			preparedStatement.setString(1, username);

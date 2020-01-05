@@ -77,7 +77,7 @@ public class OverviewServlet extends HttpServlet {
 		float totalCarbonQuantity = -1;
 		ConnectionDetails connDetails = new ConnectionDetails();
 		Connection conn = connDetails.getConnection();
-		String sql = "SELECT SUM(carbonQuantity) AS CarbonSum FROM FoodEmissions WHERE username = ?";
+		String sql = "SELECT SUM(carbonQuantity) AS CarbonSum FROM FoodEmissions WHERE username = ? AND MONTH(date) = MONTH(CURRENT_DATE()) AND YEAR(date) = YEAR(CURRENT_DATE())";
 		try {
 			PreparedStatement preparedStatement = conn.prepareStatement(sql);
 			preparedStatement.setString(1, username);
@@ -102,7 +102,7 @@ public class OverviewServlet extends HttpServlet {
 		float totalCarbonQuantity = -1;
 		ConnectionDetails connDetails = new ConnectionDetails();
 		Connection conn = connDetails.getConnection();
-		String sql = "SELECT SUM(carbonQuantity) AS CarbonSum FROM TransportEmissions WHERE username = ?";
+		String sql = "SELECT SUM(carbonQuantity) AS CarbonSum FROM TransportEmissions WHERE username = ? AND MONTH(date) = MONTH(CURRENT_DATE()) AND YEAR(date) = YEAR(CURRENT_DATE())";
 		try {
 			PreparedStatement preparedStatement = conn.prepareStatement(sql);
 			preparedStatement.setString(1, username);
@@ -125,7 +125,7 @@ public class OverviewServlet extends HttpServlet {
     	float avgCarbonQuantity = -1;
 		ConnectionDetails connDetails = new ConnectionDetails();
 		Connection conn = connDetails.getConnection();
-		String sql = "SELECT AVG(carbonQuantity) AS CarbonAvg FROM TransportEmissions";
+		String sql = "SELECT AVG(carbonQuantity) AS CarbonAvg FROM TransportEmissions WHERE MONTH(date) = MONTH(CURRENT_DATE()) AND YEAR(date) = YEAR(CURRENT_DATE())";
 		try {
 			PreparedStatement preparedStatement = conn.prepareStatement(sql);
 			ResultSet rs = preparedStatement.executeQuery();
@@ -148,7 +148,7 @@ public class OverviewServlet extends HttpServlet {
 		float avgCarbonQuantity = -1;
 		ConnectionDetails connDetails = new ConnectionDetails();
 		Connection conn = connDetails.getConnection();
-		String sql = "SELECT AVG(carbonQuantity) AS CarbonAvg FROM FoodEmissions";
+		String sql = "SELECT AVG(carbonQuantity) AS CarbonAvg FROM FoodEmissions WHERE MONTH(date) = MONTH(CURRENT_DATE()) AND YEAR(date) = YEAR(CURRENT_DATE())";
 		try {
 			PreparedStatement preparedStatement = conn.prepareStatement(sql);
 			ResultSet rs = preparedStatement.executeQuery();

@@ -31,9 +31,6 @@ public class RegisterServlet extends HttpServlet {
 				response.setContentType("text/html");
 				PrintWriter out = response.getWriter();
 				
-				ConnectionDetails connDetails = new ConnectionDetails();
-				Connection conn = connDetails.getConnection();
-				
 				String username = request.getParameter("username");		
 				String firstname = request.getParameter("firstname");
 				String lastname = request.getParameter("lastname");
@@ -50,6 +47,7 @@ public class RegisterServlet extends HttpServlet {
 					registerStatus = createUser(username, password, firstname, lastname, email, budget);
 					if(registerStatus) {
 						out.print("Successful Registration Form");
+						request.setAttribute("username", username);
 						RequestDispatcher rd = request.getRequestDispatcher("main.jsp");
 						rd.include(request, response);
 					} else {
@@ -58,9 +56,9 @@ public class RegisterServlet extends HttpServlet {
 				}
 	}
 	/**
-	 * @apiNote {usernameExists} Checks if username already exists in Users table
+	 * Checks if username already exists in Users table
 	 * @param username
-	 * @return
+	 * @return exists status
 	 */
 	private boolean usernameExists(String username) {
 		boolean exists = false;
@@ -83,7 +81,16 @@ public class RegisterServlet extends HttpServlet {
 		}
 		return exists;
 	}
-	
+	/**
+	 * Inserts new row for a new user in Users table
+	 * @param username
+	 * @param password
+	 * @param firstname
+	 * @param lastname
+	 * @param email
+	 * @param budget
+	 * @return query status
+	 */
 	private boolean createUser(
 			String username, 
 			String password, 

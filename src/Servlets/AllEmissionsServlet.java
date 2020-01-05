@@ -35,9 +35,11 @@ public class AllEmissionsServlet extends HttpServlet {
 				RequestDispatcher rd = request.getRequestDispatcher("/allEmissions.jsp");
                 request.setAttribute("FoodEmissions", foodEmissionsList);
                 request.setAttribute("TransportEmissions", transportEmissionsList);
+				request.setAttribute("username", username);
                 rd.forward(request, response);
 			} else {
 				out.print("Oops.. Something went wrong!");
+				request.setAttribute("username", username);
 				RequestDispatcher rd = request.getRequestDispatcher("main.jsp");
 				rd.include(request, response);
 			}

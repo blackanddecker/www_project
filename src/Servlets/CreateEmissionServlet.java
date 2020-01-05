@@ -23,12 +23,8 @@ public class CreateEmissionServlet extends HttpServlet {
 		
 		/* Check which type was selected */			
 		String username = request.getParameter("username");
-		//out.print("USERNAME: " + username + "<br>");
 		String transportType = request.getParameter("transferType");
-		//out.print("TRANSPORT TYPE IS: " + transportType);
-
 		String foodType = request.getParameter("foodType");
-		//out.print("FOOD TYPE IS: " + foodType);
 
 		if(transportType != null) {
 			request.setAttribute("username", username);

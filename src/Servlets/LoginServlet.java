@@ -17,6 +17,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class LoginServlet
@@ -34,11 +35,9 @@ public class LoginServlet extends HttpServlet {
 		boolean loginStatus = false;
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();	
-		// Get request Parameters
 		String username = request.getParameter("username");
-		out.print("USERNAME: " + username);
 		String password = request.getParameter("psw");
-		// Check validity of credentials
+		
 		loginStatus = validateLogin(username, password);
 		if (loginStatus) {
 			out.print("Successful Login!");

@@ -36,11 +36,13 @@ public class AddTransportEmissionServlet extends HttpServlet {
 			float carbonPerTrip = calculateCarbonByTrip(distance, transportType);
 			insertStatus = insertTransportEmission(username, transportType, distance, carbonPerTrip);
 			if(insertStatus) {
+				request.setAttribute("username", username);
 				request.setAttribute("carbon", carbonPerTrip);
 				RequestDispatcher rd = getServletContext().getRequestDispatcher("/successfulEntry.jsp");
 				rd.forward(request, response);
 			} else {
 				out.print("Oops.. Something went wrong!");
+				request.setAttribute("username", username);
 				RequestDispatcher rd = request.getRequestDispatcher("main.jsp");
 				rd.include(request, response);
 			}

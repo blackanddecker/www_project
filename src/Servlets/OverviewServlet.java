@@ -56,10 +56,12 @@ public class OverviewServlet extends HttpServlet {
                 request.setAttribute("TotalUserBudget", totalUserBudget);
                 request.setAttribute("warning", warning);
                 request.setAttribute("offset", offset);
-                
+				request.setAttribute("username", username);
+
                 rd.forward(request, response);
 			} else {
 				out.print("Oops.. Something went wrong!");
+				request.setAttribute("username", username);
 				RequestDispatcher rd = request.getRequestDispatcher("overview.jsp");
 				rd.include(request, response);
 			}

@@ -11,6 +11,13 @@
     <title>Successful Entry</title>
 
     <style>
+    	input[type="submit"]{
+	   		border:none; 
+	   		background:#000; 
+	   		color:#fff;
+	   		width:150px;
+	   		height:60px;
+   		}
         body {font-family: Arial, Helvetica, sans-serif;}
 
         .container-app-title{
@@ -57,17 +64,42 @@
             </h1>
         </div>
     
-        <nav class="navbar navbar-inverse">
-                <div class="container-fluid">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="main.jsp">Home</a></li>
-                        <li><a href="add_emission.jsp">Add Emission</a></li>
-                        <li><a href="allEmissions.jsp">Check Emissions</a></li>
-                        <li><a href="overview.jsp">Check Current Budget</a></li>
-                        <li><a href="settings.jsp">Settings</a></li>
-                    </ul>
-                </div>
-            </nav>
+	<nav class="navbar navbar-inverse">
+	    <div class="container-fluid">
+	        <ul class="nav navbar-nav">
+	            <li>
+	            	<form method="post" action="main.jsp">
+	            		<input type="hidden" name="username" value="<%=request.getParameter("username")%>">
+	            		<input type="submit" Value="Home">
+	            	</form>
+	            </li>
+	            <li class="active">
+	            	<form method="post" action="add_emission.jsp">
+	            		<input type="hidden" name="username" value="<%=request.getParameter("username")%>">
+	            		<input type="submit" Value="Add Emission">
+	            	</form>
+	            </li>
+	            <li>
+	            	<form method="post" action="AllEmissionsServlet">
+	            		<input type="hidden" name="username" value="<%=request.getParameter("username")%>">
+	            		<input type="submit" Value="Check Emissions">
+	            	</form>
+	            </li>
+	            <li>
+	            	<form method="post" action="OverviewServlet">
+	            		<input type="hidden" name="username" value="<%=request.getParameter("username")%>">
+	            		<input type="submit" Value="Check Current Budget">
+	            	</form>
+	            </li>
+	            <li>
+	            	<form method="post" action="settings.jsp">
+	            		<input type="hidden" name="username" value="<%=request.getParameter("username")%>">
+	            		<input type="submit" Value="Settings">
+	            	</form>
+	            </li>
+	        </ul>
+	    </div>
+    </nav>
     <div class="container-main-text">
         <h3>Your carbon waste is:</h3>
         <h2><strong><%=request.getAttribute("carbon")%></strong> <b>kg CO2eq</b></h2>

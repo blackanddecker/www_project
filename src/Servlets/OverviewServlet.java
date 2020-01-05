@@ -39,7 +39,14 @@ public class OverviewServlet extends HttpServlet {
                 float totalUserEmissions = foodEmissions + transportEmissions;
                 float remainingBudget = totalUserBudget - totalUserEmissions;
                 float avgEmissions = avgTransportEmissions + avgFoodEmissions;
+                float offset = 0;
+                String warning = "false";
                 
+                if(remainingBudget < 0) {
+                	warning = "true";
+                	offset = - remainingBudget;
+                	remainingBudget = 0;
+                }
 				RequestDispatcher rd = request.getRequestDispatcher("overview.jsp");
                 request.setAttribute("FoodEmissions", foodEmissions);
                 request.setAttribute("TransportEmissions", transportEmissions);
@@ -47,6 +54,8 @@ public class OverviewServlet extends HttpServlet {
                 request.setAttribute("RemainingBudget", remainingBudget);
                 request.setAttribute("AvgEmissions", avgEmissions);
                 request.setAttribute("TotalUserBudget", totalUserBudget);
+                request.setAttribute("warning", warning);
+                request.setAttribute("offset", offset);
                 
                 rd.forward(request, response);
 			} else {

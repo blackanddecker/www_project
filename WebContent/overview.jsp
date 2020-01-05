@@ -52,6 +52,13 @@
             width: max-content;
             height: max-content;
         }
+        .danger-text {
+	        margin:auto;
+            text-align: center;
+            padding: 35px;
+            height: 150px;
+            color:red;
+        }
         /*set styles for span and cancel button on small screens*/
 
         @media screen and (max-width: 300px) {
@@ -67,6 +74,16 @@
     
 </head>
 <body>
+    <% 	if("true".equals(request.getAttribute("warning"))) { 		
+	    %>
+		    <div class="danger-text">
+		    	<b>WARNING</b><br>
+		    	Your emissions have overcome the available budget for this month! <br>
+		    	The difference is: <%=request.getAttribute("offset") %> Kg
+		    </div>
+	    <%
+    	}
+    %>
     <div class="container-app-title">
         <h1>
             <strong>RubishGram</strong>
@@ -85,7 +102,7 @@
 	    </div>
     </nav>
     
-    
+
 	<script>
     window.onload = function () {
 

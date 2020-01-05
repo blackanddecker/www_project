@@ -30,22 +30,15 @@ public class OverviewServlet extends HttpServlet {
 		String username = request.getParameter("username");
 		if(username != null) {
 			float foodEmissions = selectFoodEmissionsbyUser(username);
-			System.out.println("FOOD EMISSIONS: "  + foodEmissions);
             float transportEmissions = selectTransportEmissionsbyUser(username);
-            System.out.println("Transport Emissions: " + transportEmissions);
             float avgTransportEmissions = selectTransportEmissionsAvg();
-            System.out.println("Average Transport: " + avgTransportEmissions);
             float avgFoodEmissions = selectFoodEmissionsAvg();
-            System.out.println("Average Food: " + avgFoodEmissions);
 
 			if(foodEmissions  != -1  &&  transportEmissions  != -1 ) {
-				float totalUserBudget = 500;
+				float totalUserBudget = getUserBudget(username);
                 float totalUserEmissions = foodEmissions + transportEmissions;
-                System.out.println("Total user emissions: " + totalUserEmissions);
                 float remainingBudget = totalUserBudget - totalUserEmissions;
-                System.out.println("Remaining: " + remainingBudget);
                 float avgEmissions = avgTransportEmissions + avgFoodEmissions;
-                System.out.println("Avg Emissions: " + avgEmissions);
                 
 				RequestDispatcher rd = request.getRequestDispatcher("overview.jsp");
                 request.setAttribute("FoodEmissions", foodEmissions);
@@ -53,7 +46,8 @@ public class OverviewServlet extends HttpServlet {
                 request.setAttribute("TotalUserEmmissions", totalUserEmissions);
                 request.setAttribute("RemainingBudget", remainingBudget);
                 request.setAttribute("AvgEmissions", avgEmissions);
-
+                request.setAttribute("TotalUserBudget", totalUserBudget);
+                
                 rd.forward(request, response);
 			} else {
 				out.print("Oops.. Something went wrong!");
@@ -136,7 +130,7 @@ public class OverviewServlet extends HttpServlet {
 		return avgCarbonQuantity;
 	}
     /**
-     * Calculates the average carbon emissions by food from all users
+     * Returns the average carbon emissions by food from all users
      * @return avgCarbonQuantity
      */
     public float selectFoodEmissionsAvg() {
@@ -157,5 +151,30 @@ public class OverviewServlet extends HttpServlet {
 			ex.printStackTrace();
 		}
 		return avgCarbonQuantity;
-    }	
+    }
+    /**
+     * Returns the specific user's carbon budget
+     * @param username
+     * @return budget
+     */
+    public float getUserBudget(String username) {
+    	float budget = 0;
+    	ConnectionDetails connDetails = new ConnectionDetails();
+    	Connection conn = connDetails.getConnection();
+    	String sql = "SELECT budget FROM Users WHERE username = ?";
+    	try {
+			PreparedStatement preparedStatement = conn.prepareStatement(sql);
+			preparedStatement.setString(1, username);
+			ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next())
+                {
+            		budget = rs.getFloat("budget");
+                }
+		} catch(SQLException ex) {
+			ex.printStackTrace();
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		}
+    	return budget;
+    }
 }

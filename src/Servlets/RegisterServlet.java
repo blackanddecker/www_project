@@ -40,14 +40,14 @@ public class RegisterServlet extends HttpServlet {
 				String email = request.getParameter("email");
 				String password = request.getParameter("psw");
 				String pswRepeat = request.getParameter("psw-repeat");
-				out.print("USERNAME: " + username);
+				float budget = Float.parseFloat(request.getParameter("budget"));
 				
 				if(!password.equals(pswRepeat)) {
 					out.print("Passwords do not match. Try again!");
 				} else if(usernameExists(username)){
 					out.print("Username already exists. Please choose a different one!");
 				} else {
-					registerStatus = createUser(username, password, firstname, lastname, email);
+					registerStatus = createUser(username, password, firstname, lastname, email, budget);
 					if(registerStatus) {
 						out.print("Successful Registration Form");
 						RequestDispatcher rd = request.getRequestDispatcher("main.jsp");
@@ -89,11 +89,12 @@ public class RegisterServlet extends HttpServlet {
 			String password, 
 			String firstname, 
 			String lastname, 
-			String email)  {
+			String email,
+			float budget)  {
 				ConnectionDetails connDetails = new ConnectionDetails();
 				Connection conn = connDetails.getConnection();
 				try {
-					String sql = "INSERT INTO Users VALUES (?, ?, ? ,?, ?)";
+					String sql = "INSERT INTO Users VALUES (?, ?, ? ,?, ?, ?)";
 					PreparedStatement preparedStatement = conn.prepareStatement(sql);
 					
 					preparedStatement.setString(1, username);
@@ -101,6 +102,7 @@ public class RegisterServlet extends HttpServlet {
 					preparedStatement.setString(3, firstname);
 					preparedStatement.setString(4, lastname);
 					preparedStatement.setString(5, email);
+					preparedStatement.setFloat(6, budget);
 					
 					int success = preparedStatement.executeUpdate();
 					if (success > 0) {

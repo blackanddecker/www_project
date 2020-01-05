@@ -135,7 +135,7 @@
         <div id="chartContainer" style="height: 300px; width: 400;"></div>
 
         <h3><b>October</b></h3>
-        <h4>Total Budget: 500Kg</h4>
+        <h4>Total Budget: <%=request.getAttribute("TotalUserBudget") %> Kg</h4>
 
         <div id="piechart"></div>
 
@@ -167,7 +167,7 @@
             chart.draw(data, options);
           }
         </script>
-        <h4>Remaining Budget: <%=request.getAttribute("RemainingBudget")%> Kgs</h4>
+        <h4>Remaining Budget: <%=request.getAttribute("RemainingBudget")%> Kg</h4>
 
     </div>
 

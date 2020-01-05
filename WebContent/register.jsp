@@ -14,7 +14,7 @@
 body {font-family: Arial, Helvetica, sans-serif;}
 
 /* Full-width input fields */
-input[type=text], input[type=password] {
+input[type=text], input[type=password], input[type=number] {
   width: 100%;
   padding: 15px;
   margin: 5px 0 22px 0;
@@ -23,7 +23,7 @@ input[type=text], input[type=password] {
   background: #f1f1f1;
 }
 
-input[type=text]:focus, input[type=password]:focus {
+input[type=text]:focus, input[type=password]:focus, input[type=number]:focus {
   background-color: #ddd;
   outline: none;
 }
@@ -105,8 +105,9 @@ button:hover {
 
     <label for="psw-repeat"><b>Repeat Password</b></label>
     <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
-
-      <!-- <button type="submit">Submit Information</button> -->
+    
+    <label for="budget"><b>Carbon Budget</b></label>
+	<input type="number" placeholder="Enter Monthly Carbon Budget (Suggested: 500Kg)" name="budget" required>
 
     <button type="submit">Sign Up</button>
 

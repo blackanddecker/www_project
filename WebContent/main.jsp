@@ -90,19 +90,19 @@
                 <h3>Check Emissions</h3>
             </button>
         </form>
-        <form method="get" action="OverviewServlet">
+        <form method="post" action="OverviewServlet">
         	<input type="hidden" name="username" value="<%=request.getParameter("username")%>">       
             <button>
                 <h3>Check Current Budget</h3>
             </button>
         </form>
-        <form method="get" action="settings.jsp"> 
+        <form method="post" action="settings.jsp"> 
         	<input type="hidden" name="username" value="<%=request.getParameter("username")%>">        
             <button type="submit">
                 <h3>Settings</h3>
             </button>
         </form>
-        <form method="get" action="index.jsp">
+        <form method="post" action="index.jsp">
          	<input type="hidden" name="username" value="<%=request.getParameter("username")%>">
             <button type="submit">
                 <h3>Sign Out</h3>

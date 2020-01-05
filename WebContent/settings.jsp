@@ -14,7 +14,8 @@
         body {font-family: Arial, Helvetica, sans-serif;}
         input[type=username],
         input[type=password],
-        input[type=email]{
+        input[type=email],
+        input[type=number]{
             width: 100%;
             padding: 15px;
             margin: 5px 0 22px 0;
@@ -95,8 +96,12 @@
     <!-- SETTINGS -->
 
     <form action="SettingsServlet" method="post">
+      	<input type="hidden" name="username" value="<%=request.getParameter("username")%>">
 
         <div class="container">
+        	<label for="budget"><b>Change Carbon Budget</b></label>
+        	<input type="number" placeholder="Enter New Monthly Budget" name="budget">
+
             <label for="password"><b>Change Password</b></label>
             <input type="password" placeholder="Enter New Password" name="psw">
 
